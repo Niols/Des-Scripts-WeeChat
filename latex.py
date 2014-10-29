@@ -149,4 +149,4 @@ def latex_cmd(data, buffer, args):
 	weechat.command(buffer, convert(args))
 	return weechat.WEECHAT_RC_OK
 
-hook = weechat.hook_command('latex', 'The /latex commad tries to convert in unicode the given text.', 'LaTeX code', '', '', 'latex_cmd', '')
+hook = weechat.hook_command('latex', 'The /latex command tries to convert in unicode the given LaTeX symbols.', 'LaTeX code', '', '', 'latex_cmd', '')

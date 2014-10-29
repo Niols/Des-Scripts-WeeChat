@@ -6,7 +6,7 @@ from sys import argv
 from string import ascii_letters
 from unicodedata import normalize
 
-weechat.register('asciiwrite', 'Niols', '1.0', 'GPL3', '', '', '')
+weechat.register('asciiwrite', 'Niols', '1.0', 'GPL3', 'Tu veux spam des chans en énorme ? Ce script est fait pour toi !', '', '')
 
 def get_char (c):
     try:
@@ -50,4 +50,4 @@ def asciiwrite_cmd (data, buffer, args):
     weechat.command (buffer, ' ')
     return weechat.WEECHAT_RC_OK
 
-hook = weechat.hook_command('asciiwrite', '', 'string to transform', '', '', 'asciiwrite_cmd', '')
+hook = weechat.hook_command('asciiwrite', 'The /asciiwrite command converts the given text into ascii art line.', 'string to transform', '', '', 'asciiwrite_cmd', '')
