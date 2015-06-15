@@ -1,4 +1,4 @@
-Des-Scripts-WeeChat
-===================
+WeeChat Scripts
+===============
 
-Quelques scripts WeeChat, essentiellement inutiles, mais tellement rigolos.
+This repo contains some WeeChat scripts. Some of them might even be usefull!
