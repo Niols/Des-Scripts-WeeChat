@@ -43,7 +43,7 @@ settings = {
 
     'length': '45',
     'shortener': 'http://is.gd/create.php?format=simple&url=%s',
-    'shortener_type': 'get'
+    'shortener_method': 'get'
 }
 
 
