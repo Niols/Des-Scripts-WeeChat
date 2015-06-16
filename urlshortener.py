@@ -53,7 +53,8 @@ ur_ip_addr = r'%s(?:\.%s){3}' % (ur_octet, ur_octet)
 ur_label = r'[0-9a-z][-0-9a-z]*[0-9a-z]?'
 ur_domain = r'%s(?:\.%s)*\.[a-z][-0-9a-z]*[a-z]?' % (ur_label, ur_label)
 url_regexp = re.compile(
-    r'(\w+://(?:%s|%s)(?::\d+)?(?:/[^\])>\s]*)?)' % (ur_domain, ur_ip_addr),
+    r'(http[s]?://(?:%s|%s)(?::\d+)?(?:/[^\])>\s]*)?)' %
+    (ur_domain, ur_ip_addr),
     re.I
 )
 
