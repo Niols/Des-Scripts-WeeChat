@@ -9,7 +9,6 @@ import weechat
 #
 
 import re
-from os.path import expanduser # Niols-added
 
 def convert(s):
 	global data_loaded
@@ -106,7 +105,7 @@ def load_data():
 	load_dict("textmono", textmono) # Niols-modified
 
 def load_dict(filename, D):
-	with open( weechat.info_get('weechat_dir', '') + '/python/data/latex/' + filename, 'r') as f: # Niols-modified
+	with open( weechat.info_get('weechat_dir', '') + '/python/latex/' + filename, 'r') as f: # Niols-modified
 		line = f.readline()
 		while line != "":
 			words = line.split()
@@ -116,7 +115,7 @@ def load_dict(filename, D):
 			line = f.readline()
 
 def load_symbols():
-	with open( weechat.info_get('weechat_dir', '') + '/python/data/latex/symbols', 'r') as f: # Niols-modified
+	with open( weechat.info_get('weechat_dir', '') + '/python/latex/symbols', 'r') as f: # Niols-modified
 		line = f.readline()
 		while line != '':
 			words = line.split()
