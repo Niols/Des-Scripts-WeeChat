@@ -31,10 +31,10 @@ except Exception:
 from sys import version_info
 
 if version_info.major == 2:
-    from urllib2 import urlopen
+    from urllib2 import urlopen, URLError
     from cStringIO import StringIO as BytesIO
 else:
-    from urllib.request import urlopen
+    from urllib.request import urlopen, URLError
     from io import BytesIO
 
 try:
@@ -61,6 +61,11 @@ SCRIPT_DESC    = 'Recognizes URLs in incoming messages, compare the image they p
 def get_full_path(path):
     return join_path(weechat.info_get('weechat_dir', ''), 'python',
                      SCRIPT_NAME, path)
+
+def send_traceback():
+    for line in format_exc().split('\n'):
+        if line:
+            weechat.prnt('', '%s: %s' % (SCRIPT_NAME, line))
 
 # ============================== [ URL regex ] =============================== #
 
@@ -115,7 +120,11 @@ replacement_database = [
 
 def find_replacement (url):
     try:
-        im = Image.open(BytesIO(urlopen(url).read()))
+        im = Image.open(BytesIO(urlopen(url, timeout=1).read()))
+
+    except URLError as e:
+        send_traceback()
+        
     except IOError:
         return None
 
@@ -138,9 +147,7 @@ def cb_in_privmsg(data, modifier, modifier_data, message):
                 message = message.replace(url, replacement)
                 
     except:
-        for line in format_exc().split('\n'):
-            if line:
-                weechat.prnt('', '%s: %s' % (SCRIPT_NAME, line))
+        send_traceback()
         
     return message
 
