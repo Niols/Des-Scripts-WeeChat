@@ -6,11 +6,11 @@ from sys import argv
 from string import ascii_letters
 from unicodedata import normalize
 
-weechat.register('asciiwrite', 'Niols', '1.0', 'GPL3', 'Tu veux spam des chans en énorme ? Ce script est fait pour toi !', '', '')
+weechat.register('asciiwrite', 'Niols', '1.0.1', 'GPL3', 'Tu veux spam des chans en énorme ? Ce script est fait pour toi !', '', '')
 
 def get_char (c):
     try:
-        with open( weechat.info_get('weechat_dir', '') + '/python/data/asciiwrite/font/' + str(ord(c)), 'r' ) as f:
+        with open( weechat.info_get('weechat_dir', '') + '/python/asciiwrite/font/' + str(ord(c)), 'r' ) as f:
             return f.read().split('\n')
     except:
         weechat.prnt('', 'Did not found char %s [%d]. Replacing by NULL.' % (c, ord(c)))
