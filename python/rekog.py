@@ -59,7 +59,8 @@ SCRIPT_DESC    = 'Recognizes URLs in incoming messages, compare the image they p
 # =============================== [ helpers ] ================================ #
 
 def get_full_path(path):
-    return join_path(weechat.info_get('weechat_dir', ''), SCRIPT_NAME, path)
+    return join_path(weechat.info_get('weechat_dir', ''), 'python',
+                     SCRIPT_NAME, path)
 
 # ============================== [ URL regex ] =============================== #
 
